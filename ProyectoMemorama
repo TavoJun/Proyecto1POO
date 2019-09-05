@@ -1,0 +1,489 @@
+class Cuadro
+{
+  //atributos
+  int x,y;
+  int dix=40;
+  int diy=40;
+  int c=255;
+  int identf;
+  int seguir=10;
+  int dc=0;
+  int punt=0;
+  boolean vol;
+  float distancia;
+
+
+  //métodos
+  //constructor
+  Cuadro(int x_,int y_,int identf_)
+  {
+    this.x=x_;
+    this.y=y_;
+    this.identf=identf_;
+  }
+
+
+  void display()
+  {
+    reiniciopan();
+    switch(estado){
+    case 0:
+    background(24,186,166);
+    textp1();
+    text2p1();
+    break;
+    case 1:
+    background(255,81,81);
+    textp2();
+    break;
+    case 2:
+    fill(this.c,200,100);
+    rectMode(CENTER);
+    pushMatrix();
+    translate(this.x,this.y);
+    rect(0,0,this.dix*2,this.diy*2);
+    popMatrix();
+    distancia();
+    figura();
+    reiniciova();
+    valoracion();
+    break;
+    case 3:
+      background(255);
+    break;
+  }
+  }//findisplay
+
+    void textp1(){
+      pushMatrix();
+      textSize(200);
+      text("Figu-rama", 100, 250);
+      fill(74,33,15);
+      popMatrix();
+    }
+
+    void text2p1(){
+      pushMatrix();
+      textSize(25);
+      text("Preciona Cualquier Tecla Una Vez Para Continuar", 250, 375);
+      fill(229,142,105);
+      popMatrix();
+    }
+
+      void textp2(){
+      pushMatrix();
+      String s = "Instrucciones                                                                      Todos los pares se revuelven y se colocan boca abajo en un tablero, Si ves que las dos cartas son iguales entonces ya tienes un par, y puedes hasta seguir tirando hasta que te equivoques, si dichas cartas no son iguales entonces deberás de volverlas a poner exactamente en su lugar y dejar que el otro tire. ";
+      fill(191,255,158);
+      text(s, 200, 200, 700, 400);  // Text wraps within text box
+      popMatrix();
+    }
+
+    void distancia(){
+    this.distancia=dist(this.x,this.y,mouseX,mouseY);
+    if(this.distancia<this.dix && this.distancia<this.diy && mousePressed == true ){
+    this.vol=true;
+    switch(contador){
+    case 1:
+    cartaA=identf;
+    //this.vol=true;
+    break;
+    case 2:
+    cartaB=identf;
+    //this.vol=true;
+    break;
+          }//finswitch
+       }//finifdist
+   }//fin distancia
+
+   void valoracion(){
+      if(cartaA==cartaB && cartaA>0 && cartaB>0){
+      println("Son Iguales");
+     } else if(cartaA != cartaB && cartaA>0 && cartaB>0  ){
+      println("No Son Iguales");
+      this.vol=false;
+     }
+
+   }
+
+   void reiniciopan(){
+    if(estado>3){
+    estado = 0;
+    }
+
+   }
+
+
+   void reiniciova(){
+     switch(contador){
+    case 3:
+     println("reinicio");
+      cartaA=-1;
+      cartaB=-1;
+      this.c=0;
+      if(cartaA==-1 && cartaB==-1){
+        contador=1;
+      }
+    break;
+          }
+   }
+
+   void figura(){
+     if(this.vol==true){
+             if(this.identf == 1);{
+
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(195, 125, 130, 190, 260,190);
+triangle(195, 255, 130, 190, 260,190);
+triangle(195, 125, 130, 190, 110, 75);
+triangle(195, 125, 260, 190, 280,75);
+          popMatrix();
+          popMatrix();
+           }
+
+           if(this.identf == 2);{
+
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(130, 125, 150, 155, 195, 140);
+triangle(150, 155, 260, 125, 175, 200);
+triangle(210, 200, 260, 125, 175, 200);
+triangle(170, 135, 195, 110, 195, 140);
+triangle(220, 135, 195, 110, 195, 140);
+triangle(160, 280, 210, 315, 195, 200);
+triangle(130, 325, 130, 250, 230, 324);
+          popMatrix();
+          popMatrix();
+           }
+
+           if(this.identf == 3);{
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(165, 125, 230, 125, 190, 200);
+triangle(230, 125, 270, 165, 190, 200);
+triangle(265, 210, 270, 165, 190, 200);
+triangle(265, 210, 190, 270, 190, 200);
+triangle(120, 215, 190, 270, 190, 200);
+triangle(120, 215, 130, 165, 190, 200);
+triangle(165, 125, 130, 165, 190, 200);
+          popMatrix();
+          popMatrix();
+           }
+
+            if(this.identf == 4);{
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(130, 195, 270, 195, 225, 110);
+triangle(130, 195, 170, 110, 225, 110);
+triangle(100, 250, 170, 110, 100, 160);
+triangle(290, 250, 295, 150, 225, 110);
+triangle(130, 195, 160, 235, 190, 195);
+triangle(230, 235, 160, 235, 190, 195);
+triangle(230, 235, 265, 195, 190, 195);
+
+          popMatrix();
+          popMatrix();
+           }
+
+
+          if(this.identf == 5);{
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(35, 180, 100, 170, 110, 255);
+triangle(230, 300, 100, 170, 110, 255);
+triangle(230, 300, 100, 170, 180, 210);
+triangle(180, 210, 220, 230, 200, 185);
+triangle(180, 210, 220, 230, 230, 300);
+triangle(230, 195, 220, 230, 230, 300);
+triangle(200, 185, 220, 230, 230, 195);
+triangle(270, 125, 230, 195, 230, 300);
+triangle(270, 125, 310, 200, 345, 95);
+triangle(230, 300, 270, 125, 310, 200);
+          popMatrix();
+          popMatrix();
+           }
+
+            if(this.identf == 6);{
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(120, 120, 180, 170, 140, 180);
+triangle(145, 260, 180, 170, 140, 180);
+triangle(220, 180, 180, 170, 240, 120);
+triangle(215, 260, 180, 170, 220, 180);
+          popMatrix();
+          popMatrix();
+           }
+
+          if(this.identf == 7);{
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(160, 250, 100, 170, 165, 120);
+triangle(160, 250, 220, 120, 165, 120);
+triangle(215, 250, 220, 120, 290, 175);
+triangle(215, 250, 220, 120, 160, 250);
+triangle(100, 120, 100, 170, 165, 120);
+triangle(290, 120, 220, 120, 290, 175);
+triangle(100, 120, 150, 90, 165, 120);
+triangle(290, 120, 220, 120, 240, 90);
+          popMatrix();
+          popMatrix();
+           }
+
+            if(this.identf == 8);{
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(195, 250, 100, 170, 165, 120);
+triangle(195, 250, 220, 120, 165, 120);
+triangle(195, 250, 220, 120, 290, 175);
+triangle(145, 100, 100, 170, 165, 120);
+triangle(235, 100, 220, 120, 290, 175);
+
+          popMatrix();
+          popMatrix();
+           }
+
+                      if(this.identf == 9);{
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(160, 250, 100, 170, 165, 120);
+triangle(160, 250, 220, 120, 165, 120);
+triangle(215, 250, 220, 120, 290, 175);
+triangle(215, 250, 220, 120, 160, 250);
+triangle(100, 120, 100, 170, 165, 120);
+triangle(290, 120, 220, 120, 290, 175);
+triangle(100, 120, 150, 90, 165, 120);
+triangle(290, 120, 220, 120, 240, 90);
+
+          popMatrix();
+          popMatrix();
+           }
+
+           if(this.identf == 10);{
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(195, 250, 100, 170, 165, 120);
+triangle(195, 250, 220, 120, 165, 120);
+triangle(195, 250, 220, 120, 290, 175);
+triangle(145, 100, 100, 170, 165, 120);
+triangle(235, 100, 220, 120, 290, 175);
+
+          popMatrix();
+          popMatrix();
+           }
+
+          if(this.identf == 11);{
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(200,180, 235, 140, 210, 55);
+triangle(200,180, 170, 130, 210, 55);
+triangle(200,180, 235, 140, 320, 160);
+triangle(200,180, 255, 210, 320, 160);
+triangle(200,180, 255, 210, 250, 300);
+triangle(200,180, 195, 240, 250, 300);
+triangle(200,180, 195, 240, 110, 265);
+triangle(200,180, 150, 195, 110, 265);
+triangle(200,180, 150, 195, 90, 130);
+triangle(200,180, 170, 130, 90, 130);
+
+          popMatrix();
+          popMatrix();
+           }
+
+           if(this.identf == 12);{
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(160, 250, 190, 250, 130, 170);
+triangle(190, 250, 190, 170, 130, 170);
+triangle(190, 250, 190, 170, 250, 170);
+triangle(190, 250, 220, 250, 250, 170);
+triangle(230, 125, 220, 170, 250, 170);
+triangle(145, 125, 155, 170, 130, 170);
+triangle(160, 250, 140, 260, 148, 220);
+triangle(140, 260, 115, 240, 148, 220);
+triangle(140, 260, 115, 240, 130, 300);
+triangle(140, 260, 160, 250, 130, 300);
+triangle(220, 250, 230, 225, 240, 260);
+triangle(260, 245, 230, 225, 240, 260);
+triangle(220, 250, 240, 260, 250, 300);
+triangle(260, 245, 240, 260, 250, 300);
+
+          popMatrix();
+          popMatrix();
+           }
+
+                      if(this.identf == 13);{
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(150, 250, 240, 250, 200, 220);
+triangle(270, 200, 240, 250, 200, 220);
+triangle(150, 250, 200, 220, 115, 200);
+triangle(180, 215, 200, 220, 205, 185);
+triangle(225, 212, 200, 220, 205, 185);
+triangle(225, 212, 270, 200, 215, 200);
+triangle(180, 215, 115, 200, 190, 200);
+
+          popMatrix();
+          popMatrix();
+           }
+
+
+              if(this.identf == 14);{
+          this.c=0;
+          strokeWeight(2);
+          stroke(random(255),random(255),random(255));
+          pushMatrix();
+          translate(this.x-40,this.y-40);
+          scale(0.2);
+          pushMatrix();
+triangle(180, 270, 230, 200, 100, 150);
+triangle(100, 150, 230, 200, 240, 185);
+triangle(100, 150, 270, 140, 240, 185);
+triangle(240, 225, 230, 200, 240, 185);
+triangle(240, 225, 230, 200, 220, 215);
+
+          popMatrix();
+          popMatrix();
+           }
+
+     }
+
+     if(this.vol==false){
+       if(this.identf == 1);{
+         this.c=255;
+         //rect(this.x,this.y,10,10);
+       } if(this.identf == 2){
+         //rect(this.x,this.y,20,20);
+         this.c=255;
+       }
+     }
+   }//fin figura
+
+}//finclass
+
+
+//Variables globales
+int x=0;
+int concard=0;
+int cartaA=-1;
+int cartaB=-1;
+int value = 0;
+int value1 = 0;
+int contador=1;
+int puntos=14;
+int colrA;
+int colrB;
+int estado=0;
+
+ArrayList <Cuadro> Cuadros;
+
+void setup(){
+  size(1200,600);
+  Cuadros = new ArrayList<Cuadro>();
+            //Cuadro(x,y,ident);
+
+ for( int i = 0; i<7; i++){
+   this.x+=150;
+    Cuadros.add(new Cuadro(x,50,1));
+    Cuadros.add(new Cuadro(x,200,1));
+    Cuadros.add(new Cuadro(x,350,2));
+    Cuadros.add(new Cuadro(x,500,2));
+  }
+
+  background(204,234,253);
+}
+
+void draw(){
+   background(204,234,253);
+
+  /*print("cartaA");
+  println(cartaA);
+  print("cartaB");
+  println(cartaB);
+  println(contador);*/
+  println(estado);
+
+
+for(Cuadro C : Cuadros){
+  //for(int i=0; i<puntos; i++){
+  C.display();
+  //}
+  }//finfor
+
+
+
+}//fin draw
+void mouseClicked() {
+  if (value < 255) {
+     contador+=1;
+  }
+}
+void keyPressed(){
+  if (value < 255) {
+     estado+=1;
+  }
+}
